@@ -1,0 +1,33 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build physics-SIM",
+        "type": "cppbuild",
+        "command": "/usr/bin/g++",
+        "args": [
+          "-g",
+          "-std=c++17",
+          "-I${workspaceFolder}/include",           // locate glad/ and GLFW/ headers
+          "${workspaceFolder}/src/main.cpp",        // your app
+          "${workspaceFolder}/src/glad.c",          // GLAD loader
+          "-lglfw",                                 // GLFW (system or lib/ if built locally)
+          "-lGL",                                   // OpenGL core
+          "-ldl",                                   // dynamic loader for GLAD
+          "-pthread",                               // POSIX threads
+          "-o",
+          "${workspaceFolder}/physics-SIM.exe"           // output binary
+        ],
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "problemMatcher": ["$gcc"],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "detail": "WSL g++ build task for physics-SIM"
+      }
+    ]
+  }
+  
